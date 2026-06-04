@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <head>
+    <!-- Dòng code chèn logo nhỏ trên thanh tab (Favicon) -->
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/KYNRjVLh/ccbam.jpg">
+    
+    <title>H-Hind EngLish</title>
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-Hind English - Đăng Ký Nhập Học</title>
+    <style>
+        /* --- CSS RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #fa3217;
+            --secondary-color: #ffc107;
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+                body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('https://i.postimg.cc/cLSpLysn/z7861614152177-b2be0d832256aceefdb9130f9c11028f.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo h2 {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-register-nav {
+            background-color: var(--primary-color);
+            color: var(--white) !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8)), url('https://via.placeholder.com/1920x800') no-repeat center center/cover;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-main {
+            background-color: var(--secondary-color);
+            color: #000;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- COURSES SECTION --- */
+        .courses {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: var(--white);
+        }
+
+        .course-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* --- ADMISSION FORM SECTION --- */
+        .admission {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .form-container {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+
+        .radio-group label {
+            font-weight: normal;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #004085;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #222;
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Thu gọn menu trên mobile (để đơn giản hóa code) */
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav">
+            <div class="logo">
+                <h2>H-Hind<span>EngLish</span></h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#courses">Khóa Học</a></li>
+                <li><a href="#admission" class="btn-register-nav">Đăng Ký Ngập Học</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1> IELTS TOEIC GIAO TIẾP THỰC CHIẾN </h1>
+            <p> Luyện Thi Đại học, Cambridge Starters, Movers .</p>
+            <a href="#admission" class="btn-main">Đăng Ký Tư Vấn Ngay</a>
+        </div>
+    </section>
+
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Các Khóa Học Nổi Bật</h2>
+                <p>Được thiết kế lộ trình tinh gọn, phù hợp với mọi trình độ.</p>
+            </div>
+            <div class="course-grid">
+                <div class="course-card">
+                    <img src="https://i.postimg.cc/bNXFYFRt/z7861614152177-b2be0d832256aceefdb9130f9c11028f.jpg" alt="IELTS Cam Kết" class="course-img">
+                    <div class="course-content">
+                        <h3>Luyện Thi IELTS Cam Kết</h3>
+                        <p>Lộ trình từ mất gốc đến 6.5+ giúp sinh viên đủ điều kiện ra trường và săn học bổng.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <img src="https://i.postimg.cc/jjNDT2qh/a4c1705a7c64fd3aa475.jpg" alt="Tiếng Anh Giao Tiếp" class="course-img">
+                    <div class="course-content">
+                        <h3>Tiếng Anh Giao Tiếp Phản Xạ</h3>
+                        <p>Tập trung bổ sung từ vựng, phát âm chuẩn và phản xạ tự nhiên trong môi trường học tập, làm việc.</p>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <img src="https://i.postimg.cc/tgSpLHW6/1442dc4cd272532c0a63.jpg" alt="Luyện thi TOEIC" class="course-img">
+                    <div class="course-content">
+                        <h3>TOEIC 4 Kỹ Năng Đột Phá</h3>
+                        <p>Tối ưu hóa điểm số TOEIC trong thời gian ngắn nhất phục vụ cho việc tốt nghiệp và đi làm.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="admission" id="admission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Đơn Đăng Ký Nhập Học</h2>
+                <p>Vui lòng điền đầy đủ thông tin dưới đây, tư vấn viên sẽ liên hệ lại với bạn trong vòng 24h.</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="enrollmentForm" onsubmit="handleSubmit(event)">
+                    <div class="form-grid">
+                        
+                        <div class="form-group">
+                            <label for="fullName">Họ và tên học viên *</label>
+                            <input type="text" id="fullName" required placeholder="Nguyễn Văn A">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Ngày tháng năm sinh *</label>
+                            <input type="date" id="dob" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại liên hệ *</label>
+                            <input type="tel" id="phone" pattern="[0-9]{10}" required placeholder="0912345678">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Địa chỉ Email *</label>
+                            <input type="email" id="email" required placeholder="nguyenvana@gmail.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Bạn đang là: *</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="studentType" value="Học sinh" checked> Học sinh</label>
+                                <label><input type="radio" name="studentType" value="Sinh viên"> Sinh viên</label>
+                                <label><input type="radio" name="studentType" value="Người đi làm"> Người đi làm</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school">Trường đang học / Nơi làm việc</label>
+                            <input type="text" id="school" placeholder="Tên trường ĐH hoặc trường THPT...">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="courseSelect">Chọn khóa học mong muốn đăng ký *</label>
+                            <select id="courseSelect" required>
+                                <option value="">-- Vui lòng chọn khóa học --</option>
+                                <option value="IELTS">Luyện Thi IELTS Cam Kết (Khuyên dùng cho SV)</option>
+                                <option value="Giao tiếp">Tiếng Anh Giao Tiếp Phản Xạ</option>
+                                <option value="TOEIC">TOEIC 4 Kỹ Năng Đột Phá</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">Lời nhắn / Mục tiêu học tập của bạn</label>
+                            <textarea id="message" rows="4" placeholder="Ví dụ: Mình muốn đạt IELTS 6.5 trong vòng 6 tháng, hiện tại mất gốc..."></textarea>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn-submit">Gửi Đơn Đăng Ký</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 H-Hind English.</p>
+            <p>Địa chỉ: 18/2 Đường Tân Hoà, Khu Phố, Đông Hoà, Hồ Chí Minh. </p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            // Ngăn chặn trang web bị tải lại khi bấm nút gửi
+            event.preventDefault();
+
+            // Lấy dữ liệu từ các trường thông tin
+            const fullName = document.getElementById('fullName').value;
+            const dob = document.getElementById('dob').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const studentType = document.querySelector('input[name="studentType"]:checked').value;
+            const school = document.getElementById('school').value;
+            const course = document.getElementById('courseSelect').value;
+            const message = document.getElementById('message').value;
+
+            // Hiển thị thông báo (Ở thực tế đoạn này sẽ gửi data về Email hoặc Google Sheet của bạn)
+            alert(`Chúc mừng ${fullName}!\nĐơn đăng ký khóa học [${course}] của bạn đã được ghi nhận thành công.\nChúng tôi sẽ liên hệ với bạn qua số ${phone} sớm nhất!`);
+            
+            // Xóa sạch dữ liệu form sau khi gửi thành công
+            document.getElementById('enrollmentForm').reset();
+        }
+    </script>
+</body>
+</html>
