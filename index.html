@@ -335,6 +335,7 @@
     </section>
 
     <section class="admission" id="admission">
+        <form id="enrollmentForm" action="https://formspree.io/f/xrevgrdy" method="POST">
         <div class="container">
             <div class="section-title">
                 <h2>Đơn Đăng Ký Nhập Học</h2>
@@ -342,7 +343,10 @@
             </div>
             
             <div class="form-container">
-                <form id="enrollmentForm" action="https://formspree.io/f/xrevgrdy" method="POST">
+            <div class="form-group">
+            <label for="name">Họ và tên </label>
+            <input type="text" id="name" name="name" required placeholder="Nguyễn Văn A">
+            </div>
                     <div class="form-grid">
                         
                         <div class="form-group">
@@ -391,45 +395,44 @@
 
                         <div class="form-group full-width">
                             <label for="message">Lời nhắn / Mục tiêu học tập của bạn</label>
-                            <textarea id="message" rows="4" placeholder="Ví dụ: Mình muốn đạt IELTS 6.5 trong vòng 6 tháng, hiện tại mất gốc..."></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Ví dụ: Mình muốn đạt IELTS 6.5 trong vòng 6 tháng, hiện tại mất gốc..."></textarea>
                         </div>
 
                     </div>
 
                     <button type="submit" class="btn-submit">Gửi Đơn Đăng Ký</button>
-                </form>
             </div>
         </div>
+        </form>
     </section>
-
     <footer>
         <div class="container">
             <p>&copy; 2026 H-Hind English.</p>
             <p>Địa chỉ: 18/2 Đường Tân Hoà, Khu Phố, Đông Hoà, Hồ Chí Minh. </p>
         </div>
     </footer>
+<script>
+document.getElementById('enrollmentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    <script>
-        function handleSubmit(event) {
-            // Ngăn chặn trang web bị tải lại khi bấm nút gửi
-            event.preventDefault();
+    const fullName = document.getElementById('name')?.value || document.getElementById('fullName')?.value || "Bạn";
+    const course = document.getElementById('courseSelect')?.value || "Khóa học";
 
-            // Lấy dữ liệu từ các trường thông tin
-            const fullName = document.getElementById('fullName').value;
-            const dob = document.getElementById('dob').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const studentType = document.querySelector('input[name="studentType"]:checked').value;
-            const school = document.getElementById('school').value;
-            const course = document.getElementById('courseSelect').value;
-            const message = document.getElementById('message').value;
-
-            // Hiển thị thông báo (Ở thực tế đoạn này sẽ gửi data về Email hoặc Google Sheet của bạn)
-            alert(`Chúc mừng ${fullName}!\nĐơn đăng ký khóa học [${course}] của bạn đã được ghi nhận thành công.\nChúng tôi sẽ liên hệ với bạn qua số ${phone} sớm nhất!`);
-            
-            // Xóa sạch dữ liệu form sau khi gửi thành công
-            document.getElementById('enrollmentForm').reset();
+    fetch(this.action, {
+        method: this.method,
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            alert(`Chúc mừng ${fullName}!\nĐơn đăng ký khóa học [${course}] của bạn đã được ghi nhận.`);
+            this.reset();
+        } else {
+            alert("Có lỗi xảy ra, vui lòng thử lại sau!");
         }
-    </script>
+    }).catch(error => {
+        alert("Có lỗi kết nối, vui lòng thử lại sau!");
+    });
+});
+</script>
 </body>
 </html>
